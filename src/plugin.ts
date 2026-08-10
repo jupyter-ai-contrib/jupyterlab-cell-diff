@@ -349,6 +349,7 @@ const unifiedCellDiffPlugin: JupyterFrontEndPlugin<void> = {
         cellDiffManagers.set(cell.id, manager);
 
         notebookDiffRegistry.addManager(currentNotebook.id, manager);
+        currentNotebook.node.dispatchEvent(new Event('diff-updated'));
       }
     });
     notebookTracker.widgetAdded.connect((sender, notebookPanel) => {
